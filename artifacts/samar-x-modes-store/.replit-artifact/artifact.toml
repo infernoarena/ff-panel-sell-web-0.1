@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "SAMAR X MODES Store"
+description = "A gaming panel storefront with a public product catalog, UPI purchase flow, WhatsApp key delivery handoff, and a password-protected built-in admin panel for managing products, plans, gallery assets, UPI settings, and cursor visuals."
+version = "1.0.0"
+id = "artifacts/samar-x-modes-store"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23603
+
+[services.development]
+run = "pnpm --filter @workspace/samar-x-modes-store run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/samar-x-modes-store", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/samar-x-modes-store/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23603"
+BASE_PATH = "/"
