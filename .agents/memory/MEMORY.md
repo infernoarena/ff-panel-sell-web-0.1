@@ -1,0 +1,1 @@
+- [GitHub publishing](github-publishing.md) — empty repos need a seed commit; private-repo Pages may be unavailable on the current GitHub plan.
